@@ -1,0 +1,61 @@
+{
+  "name": "@topsoft4u/hooks",
+  "license": "MIT",
+  "version": "1.0.0",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "files": [
+    "dist",
+    "src",
+    "style"
+  ],
+  "description": "Shared React hooks",
+  "repository": "https://github.com/TopSoft4U/hooks",
+  "author": {
+    "name": "Łukasz Kolasa",
+    "email": "lukasz.kolasa@topsoft4u.com",
+    "url": "https://topsoft4u.com/"
+  },
+  "contributors": [
+    {
+      "name": "Łukasz Kolasa",
+      "email": "lukasz.kolasa@topsoft4u.com",
+      "url": "https://topsoft4u.com/"
+    }
+  ],
+  "keywords": [
+    "TopSoft4U",
+    "React",
+    "Hooks"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "pre-commit": "yarn generate_indexes && yarn eslint && yarn typecheck",
+    "generate_indexes": "barrelsby --delete --directory ./src",
+    "eslint": "eslint --ext js,jsx,ts,tsx src --fix",
+    "typecheck": "tsc -p ./ --noEmit",
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json",
+    "watch": "tsc -w",
+    "watch:cjs": "tsc -w -p tsconfig.cjs.json",
+    "clean": "rimraf --no-glob ./dist",
+    "deps:check": "npx npm-check-updates --dep prod,dev,optional",
+    "deps:update": "npx npm-check-updates --dep prod,dev,optional -u"
+  },
+  "devDependencies": {
+    "@topsoft4u/eslint-config": "^1.0.27",
+    "@types/node": "^16.11.6",
+    "@types/react": "^17.0.33",
+    "eslint": "^8.1.0",
+    "husky": "^7.0.4",
+    "react": "^17.0.2",
+    "typescript": "^4.4.4"
+  },
+  "peerDependencies": {
+    "react": "^17"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@topsoft4u"
+    ]
+  }
+}
